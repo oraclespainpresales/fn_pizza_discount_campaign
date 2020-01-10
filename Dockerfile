@@ -1,14 +1,13 @@
 FROM openjdk:13 as build-stage
 WORKDIR /function
-RUN curl https://www-eu.apache.org/dist/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz -o apache-maven-3.6.2-bin.tar.gz 
-RUN tar -zxvf apache-maven-3.6.2-bin.tar.gz
+RUN curl https://www-eu.apache.org/dist/maven/maven-3/3.6.2/binaries/apache-maven-3.6.3-bin.tar.gz -o apache-maven-3.6.2-bin.tar.gz 
+RUN tar -zxvf apache-maven-3.6.3-bin.tar.gz
 
-ENV PATH="/function/apache-maven-3.6.2/bin:${PATH}"
+ENV PATH="/function/apache-maven-3.6.3/bin:${PATH}"
 
 ENV MAVEN_OPTS -Dhttp.proxyHost= -Dhttp.proxyPort= -Dhttps.proxyHost= -Dhttps.proxyPort= -Dhttp.nonProxyHosts= -Dmaven.repo.local=/usr/share/maven/ref/repository
 ADD pom.xml /function/pom.xml
 ADD src /function/src
-RUN ["mvn", "package"]
 
 RUN ["mvn", "package", \
     "dependency:copy-dependencies", \
