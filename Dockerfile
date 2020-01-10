@@ -1,5 +1,3 @@
-FROM delabassee/fn-cache:latest as cache-stage
-
 FROM openjdk:13 as build-stage
 WORKDIR /function
 RUN curl https://www-eu.apache.org/dist/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz -o apache-maven-3.6.2-bin.tar.gz 
@@ -25,7 +23,7 @@ WORKDIR /function
 
 COPY --from=build-stage /function/target/*.jar /function/
 COPY --from=build-stage /function/fnjre/ /function/fnjre/
-COPY --from=cache-stage /libfnunixsocket.so /lib
+COPY libfnunixsocket.so /lib
 
 ENTRYPOINT [ "/function/fnjre/bin/java", \
     "--enable-preview", \
