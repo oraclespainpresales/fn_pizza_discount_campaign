@@ -9,11 +9,11 @@ ENV MAVEN_OPTS -Dhttp.proxyHost= -Dhttp.proxyPort= -Dhttps.proxyHost= -Dhttps.pr
 ADD pom.xml /function/pom.xml
 ADD src /function/src
 
-RUN ["mvn -e", "package", \
+RUN ["mvn", "package", \
     "dependency:copy-dependencies", \
     "-DincludeScope=runtime", \
     "-Dmdep.prependGroupId=true", \
-    "-DoutputDirectory=target" ]
+    "-DoutputDirectory=target","-e" ]
 
 RUN /usr/java/openjdk-13/bin/jlink --no-header-files --no-man-pages --strip-java-debug-attributes --output /function/fnjre --add-modules $(/usr/java/openjdk-13/bin/jdeps --print-module-deps /function/target/function.jar)
 
