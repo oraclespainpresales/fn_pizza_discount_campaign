@@ -9,7 +9,7 @@ ENV MAVEN_OPTS -Dhttp.proxyHost= -Dhttp.proxyPort= -Dhttps.proxyHost= -Dhttps.pr
 ADD pom.xml /function/pom.xml
 ADD src /function/src
 
-RUN ["mvn", "package", \
+RUN ["mvn", "e", "package", \
     "dependency:copy-dependencies", \
     "-DincludeScope=runtime", \
     "-Dmdep.prependGroupId=true", \
