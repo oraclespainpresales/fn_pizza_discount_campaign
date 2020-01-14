@@ -70,11 +70,11 @@ public class GetDiscount {
                     //System.err.println("QUERY:: Driver getConnection");
 
                     StringBuilder stb = new StringBuilder("SELECT NVL (");
-                    stb.append("(SELECT SUM(discount) FROM campaign WHERE ");
-                    stb.append("demozone LIKE ? ");
-                    stb.append("AND paymentmethod LIKE ? ");
-                    stb.append("AND CURRENT_DATE BETWEEN date_ini AND date_end+1 ");
-                    stb.append("AND min_amount <= ?)");
+                    stb.append("(SELECT SUM(DISCOUNT) FROM CAMPAIGN WHERE ");
+                    stb.append("DEMOZONE LIKE ? ");
+                    stb.append("AND PAYMENTMETHOD LIKE ? ");
+                    stb.append("AND CURRENT_DATE BETWEEN DATE_BGN AND DATE_END+1 ");
+                    stb.append("AND MIN_AMOUNT <= ?)");
                     stb.append(",0) as DISCOUNT FROM DUAL");
                     PreparedStatement pstmt = con.prepareStatement(stb.toString());
 
