@@ -7,4 +7,4 @@ dbwallet.zip file is generated dinamically and download from ATP with OCI cli.
 
 To invoke the function you must create a little json object. Example:
 
-<code>echo -n '{"demozone":"madrid","paymentMethod":"amex","pizzaPrice":"21"}' | fn invoke gigis-fn fnpizzadiscountcampaign</code>
+<pre>echo -n '{"demozone":"madrid","paymentMethod":"amex","pizzaPrice":"21"}' | fn invoke gigis-fn fnpizzadiscountcampaign</pre>
