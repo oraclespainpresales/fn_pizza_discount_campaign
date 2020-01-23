@@ -39,7 +39,11 @@ COPY --from=build-stage /function/target/*.jar /function/
 COPY --from=build-stage /function/fnjre/ /function/fnjre/
 COPY --from=build-stage /function/wallet/ /function/wallet/
 COPY --from=cache-stage /libfnunixsocket.so /lib
+<<<<<<< HEAD
 #COPY libfnunixsocket.so /lib
+=======
+//COPY libfnunixsocket.so /lib
+>>>>>>> d1ad85f4199015a331fbdf1bdf322590e15e9ce4
 
 ENTRYPOINT [ "/function/fnjre/bin/java", \
     "--enable-preview", \
