@@ -38,8 +38,13 @@ WORKDIR /function
 COPY --from=build-stage /function/target/*.jar /function/
 COPY --from=build-stage /function/fnjre/ /function/fnjre/
 COPY --from=build-stage /function/wallet/ /function/wallet/
+<<<<<<< HEAD
 COPY --from=cache-stage /libfnunixsocket.so /lib
 #COPY libfnunixsocket.so /lib
+=======
+COPY libfnunixsocket.so /lib
+RUN ls -la /lib
+>>>>>>> 398b495ec66e979ba40d456a48b39f21c7646784
 
 ENTRYPOINT [ "/function/fnjre/bin/java", \
     "--enable-preview", \
