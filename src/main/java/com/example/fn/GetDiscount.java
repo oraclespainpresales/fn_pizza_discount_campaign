@@ -91,10 +91,14 @@ public class GetDiscount {
                     
                     System.err.println("[" + pizzaData.toString() + "] - Pizza Price before discount: " + totalPaidValue + "$");
                     resultSet = pstmt.executeQuery();
-                    if (resultSet.next()){
+                    if (resultSet.next()){                        
                         discount = Float.parseFloat(resultSet.getString("DISCOUNT"))/100;
-                        //apply calculation to float eg: discount = 10%
-                        System.err.println("[" + pizzaData.toString() + "] - discount: " + discount + "%");
+                        if (discount > 0){
+                            //apply calculation to float eg: discount = 10%
+                            System.err.println("[" + pizzaData.toString() + "] - discount: " + (discount * 100) + "%");
+                        }
+                        else
+                            System.err.println ("[" + pizzaData.toString() + "] - No Discount campaign for this payment!");
                     }
                     else {
                         System.err.println ("[" + pizzaData.toString() + "] - No Discount campaign for this payment!");
