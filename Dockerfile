@@ -1,7 +1,7 @@
 FROM delabassee/fn-cache:latest as cache-stage
 FROM openjdk:13 as build-stage
 WORKDIR /function
-RUN curl https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -o apache-maven-3.6.3-bin.tar.gz 
+RUN wget https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
 RUN tar -zxvf apache-maven-3.6.3-bin.tar.gz
 RUN yum install -y unzip
 
